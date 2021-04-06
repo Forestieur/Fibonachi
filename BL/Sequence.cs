@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Fibonachi.BL
 {
@@ -10,40 +8,47 @@ namespace Fibonachi.BL
     {
         private const int FIRST_NUMBER = 0;
         private const int SECOND_NUMBER = 1;
-       // private List<int> numbers;
 
         public void CountToNumber(int number, out int first, out int second)
         {
-             first = FIRST_NUMBER + SECOND_NUMBER;
-             second = SECOND_NUMBER + first;         
-            while (second+first < number)
+            first = FIRST_NUMBER + SECOND_NUMBER;
+            second = SECOND_NUMBER + first;
+            int temp = second;
+            while (temp+first < number)
             {
-
-                first = second + first;
-                second = first + second;
+                temp = first + second;
+                first = second;
+                second = temp;               
             }
-
         }
         
         public void CountFromTo(int minNumber, int maxNumber, out List<int> numbers)
         {
             numbers = new List<int>();
+
             CountToNumber(minNumber, out int first, out int second);
-           
-            if(second > minNumber)
+            
+            if( minNumber <2)
             {
-                numbers.Add(second);
+               numbers.Add(1);
             }
+            if(minNumber < 3)
+            {
+                numbers.Add(2);
+            }
+            
+            int temp;
             do
             {
-                first = second + first;
-                second = first + second;
-                numbers.Add(first);
-                numbers.Add(second);
+                
+                temp = first + second;
+                first = second;
+                second = temp;
 
+                if(temp <= maxNumber && temp >= minNumber)
+                numbers.Add(temp);
             }
-            while (first+second < maxNumber);
-
+            while (first+second <= maxNumber);
             foreach( int n in numbers)
             {
                 Console.Write($"{n},");

@@ -12,7 +12,7 @@ namespace Fibonachi
         static void Main()
         {
             Sequence s = new Sequence();
-            s.CountFromTo(10,2000, out _);
+            s.CountFromTo(144,233, out _);
             Console.ReadLine();
         }
     }
