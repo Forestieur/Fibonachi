@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fibonachi.BL;
+﻿using Fibonachi.View;
 
 namespace Fibonachi
 {
@@ -11,9 +6,7 @@ namespace Fibonachi
     {
         static void Main()
         {
-            Sequence s = new Sequence();
-            s.CountFromTo(144,233, out _);
-            Console.ReadLine();
+            _ = new ConsoleOutput(123, 1500);          
         }
     }
 }

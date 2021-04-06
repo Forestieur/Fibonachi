@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 
 namespace Fibonachi.BL
 {
@@ -9,7 +7,12 @@ namespace Fibonachi.BL
         private const int FIRST_NUMBER = 0;
         private const int SECOND_NUMBER = 1;
 
-        public void CountToNumber(int number, out int first, out int second)
+        public Sequence(int minNumber, int maxNumber, out List<int> l)
+        {
+            CountFromTo(minNumber, maxNumber, out l);
+        }
+
+        private void CountToNumber(int number, out int first, out int second)
         {
             first = FIRST_NUMBER + SECOND_NUMBER;
             second = SECOND_NUMBER + first;
@@ -22,7 +25,7 @@ namespace Fibonachi.BL
             }
         }
         
-        public void CountFromTo(int minNumber, int maxNumber, out List<int> numbers)
+        private void CountFromTo(int minNumber, int maxNumber, out List<int> numbers)
         {
             numbers = new List<int>();
 
@@ -39,8 +42,7 @@ namespace Fibonachi.BL
             
             int temp;
             do
-            {
-                
+            {               
                 temp = first + second;
                 first = second;
                 second = temp;
@@ -48,11 +50,7 @@ namespace Fibonachi.BL
                 if(temp <= maxNumber && temp >= minNumber)
                 numbers.Add(temp);
             }
-            while (first+second <= maxNumber);
-            foreach( int n in numbers)
-            {
-                Console.Write($"{n},");
-            }
+            while (first+second <= maxNumber);          
 
         }
     }
